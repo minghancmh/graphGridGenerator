@@ -6,6 +6,7 @@ Install all dependencies and node modules
 
 ```bash
 npm install
+```
 
 
 First, run the development server:
