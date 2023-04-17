@@ -403,7 +403,7 @@ const styles = {
 
   container:{
     width: "200px",
-    height: "80vh",
+    height: "85vh",
     margin: "100px auto",
     display: "flex",
     background: "light-grey",
@@ -415,7 +415,7 @@ const styles = {
 
   containerTwo:{
     width: "300px",
-    height: "80vh",
+    height: "85vh",
     margin: "100px auto",
     display: "flex",
     background: "light-grey",
