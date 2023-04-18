@@ -419,13 +419,13 @@ const MyPage = () => {
 
   <div style = {styles.containerGraph}>
     <p className="pb-5">
-      Output Graph Grid:
+      Output Graph Grid: Screen Shot or Download
     </p>
     <svg fontFamily={fontFamily} fontWeight={900} ref={svgRef} viewBox={`0 0 ${inputWidth} ${inputHeight}`}>
       
 
 <CartesianGrid width={inputWidth} height={inputHeight} separatorThickness={separatorThickness} axisThickness={axisThickness} gridLineColor={gridLineColor} axisTicksFont={axisTicksFont} axisLabelFont={axisLabelFont} fontFamily = {fontFamily} xStep={xStep} yStep={yStep} showXaxis={showXaxis} showYaxis={showYaxis} scaleX={scaleX} scaleY={scaleY}/>
-<div></div>
+
 </svg>
   </div>
 
