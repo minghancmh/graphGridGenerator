@@ -312,3 +312,5 @@ for (let x = 20; x < props.width; x += interval) {
 };
 
 export default CartesianGrid;
+
+
