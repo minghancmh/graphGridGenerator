@@ -14,6 +14,8 @@ interface CartesianGridProps {
   axisLabelFont:any;
   axisTicksFont:any;
   gridLineColor:any;
+  axisThickness: any;
+  separatorThickness: any;
   
 }
 
@@ -27,9 +29,8 @@ const CartesianGrid = (props: CartesianGridProps) => {
   const darkLineThickness = 0.5; // thickness of darker lines in mm
   const lightLineThickness = 0.1; // thickness of lighter lines in mm
   const mediumLineThickness = 0.25
-  const axisThickness = 1.0;
-  const arrowWidth = 6;
-  const arrowHeight = 10;
+  const arrowThickness = 1.0;
+
 
 
   const darkLines = [];
@@ -62,16 +63,16 @@ const CartesianGrid = (props: CartesianGridProps) => {
   // vertical lines
 
   const x=props.scaleY*20; // y-axis
-  const thicknessX = axisThickness;
+  const thicknessX = props.axisThickness;
   const lineX = (
     <svg>
        <defs>
     <marker
       id="triangle"
-      viewBox="0 0 5 5"
-      refX={props.height}
+      viewBox="0 0 10 10"
+      refX={props.height*2}
       refY="5"
-      markerUnits="strokeWidth"
+      markerUnits="userSpaceOnUse"
       markerWidth="5"
       markerHeight="10"
       orient="auto">
@@ -80,7 +81,7 @@ const CartesianGrid = (props: CartesianGridProps) => {
   </defs>
       <line
       x1={x}
-      y1={5}
+      y1={1}
       x2={x}
       y2={props.height}
       stroke="black"
@@ -128,7 +129,7 @@ const CartesianGrid = (props: CartesianGridProps) => {
       );
       verticalLines.push(labely);
     
-      if (y !== props.height && y !== 0) {
+
         const separator = (
           <line
             key={`separator${y}`}
@@ -137,17 +138,19 @@ const CartesianGrid = (props: CartesianGridProps) => {
             x2={x+2.5}
             y2={y}
             stroke="black"
-            strokeWidth="1"
+            strokeWidth={props.separatorThickness}
           />
         );
-        horizontalLines.push(separator);
-      }
+
+        {(props.height-y-props.scaleX*20)/(20/props.yStep)===0?"":horizontalLines.push(separator)}
+        
+    
     }
   } 
 
 
 const y=props.height-20*props.scaleX; // x-axis
-const thicknessY = axisThickness;
+const thicknessY = props.axisThickness;
 const lineY = (
   <svg>
   <defs>
@@ -156,7 +159,7 @@ const lineY = (
  viewBox="0 0 10 10"
  refX="0"
  refY="5"
- markerUnits="strokeWidth"
+ markerUnits="userSpaceOnUse"
  markerWidth="5"
  markerHeight="10"
  orient="auto">
@@ -227,7 +230,7 @@ for (let x = 20; x < props.width; x += interval) {
   );
   verticalLines.push(label);
 
-  if (x != props.width) {
+
     const separator = (
       <line
         key={`separator${x}`}
@@ -236,11 +239,12 @@ for (let x = 20; x < props.width; x += interval) {
         x2={x}
         y2={y+2.5}
         stroke="black"
-        strokeWidth="1"
+        strokeWidth={props.separatorThickness}
       />
     );
-    verticalLines.push(separator);
-  }
+    {(x-props.scaleY*20)/(20/props.xStep)===0?"":verticalLines.push(separator)}
+    
+
 }
 } 
 

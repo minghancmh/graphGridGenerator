@@ -43,6 +43,12 @@ const MyPage = () => {
     setOpen(true);
   };
 
+  const [axisThickness, setAxisThickness] = useState("1");
+
+  const handleAxisThickness = (e:any) => {
+    setAxisThickness(e.target.value);
+  };
+
 
   const [axisTicksFont, setAxisTicksFont] = useState("5");
 
@@ -55,6 +61,13 @@ const MyPage = () => {
   const handleAxisLabelFont = (e:any) => {
     setAxisLabelFront(e.target.value);
   };
+
+  const [separatorThickness, setSeparatorThickness] = useState("1");
+
+  const handleSeparatorThickness = (e:any) => {
+    setSeparatorThickness(e.target.value);
+  };
+
 
 
   const [fontFamily, setFont] = useState("Times New Roman");
@@ -326,6 +339,41 @@ const MyPage = () => {
   </div>
 
 
+  <div className="p-1 font-normal rounded-lg shadow"> 
+    <div className="font-normal p-1">Axis Thickness: {axisThickness} pt</div> 
+
+    <Slider
+  aria-label="Axis Thickness"
+  defaultValue={Number(axisThickness)}
+  valueLabelDisplay="auto"
+  step={0.05}
+  marks
+  min={0.5}
+  max={1.5}
+  onChange={handleAxisThickness}
+  size="medium"
+/>
+
+  </div>
+
+  <div className="p-1 font-normal rounded-lg shadow"> 
+    <div className="font-normal p-1">Separator Thickness: {separatorThickness} pt</div> 
+
+    <Slider
+  aria-label="Separator Thickness"
+  defaultValue={Number(separatorThickness)}
+  valueLabelDisplay="auto"
+  step={0.01}
+  marks={[]}
+  min={0.5}
+  max={1.5}
+  onChange={handleSeparatorThickness}
+  size="medium"
+/>
+
+  </div>
+
+
   <div className="p-1 font-normal rounded-lg shadow flex-row">  
     <FormControl sx={{ m: 1, width: 250 }}>
     <InputLabel id="demo-controlled-open-select-label"> Gridline Color </InputLabel>
@@ -375,7 +423,7 @@ const MyPage = () => {
     </p>
     <svg ref={svgRef} viewBox={`0 0 ${inputWidth} ${inputHeight}`}>
 
-<CartesianGrid width={inputWidth} height={inputHeight} gridLineColor={gridLineColor} axisTicksFont={axisTicksFont} axisLabelFont={axisLabelFont} fontFamily = {fontFamily} xStep={xStep} yStep={yStep} showXaxis={showXaxis} showYaxis={showYaxis} scaleX={scaleX} scaleY={scaleY}/>
+<CartesianGrid width={inputWidth} height={inputHeight} separatorThickness={separatorThickness} axisThickness={axisThickness} gridLineColor={gridLineColor} axisTicksFont={axisTicksFont} axisLabelFont={axisLabelFont} fontFamily = {fontFamily} xStep={xStep} yStep={yStep} showXaxis={showXaxis} showYaxis={showYaxis} scaleX={scaleX} scaleY={scaleY}/>
 
 </svg>
   </div>
