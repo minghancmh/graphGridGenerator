@@ -419,7 +419,7 @@ const MyPage = () => {
 
   <div style = {styles.containerGraph}>
     <p className="pb-5">
-      Output Graph Grid: Screen Shot or Download
+      Output Graph Grid:
     </p>
     <svg fontFamily={fontFamily} fontWeight={900} ref={svgRef} viewBox={`0 0 ${inputWidth} ${inputHeight}`}>
       
