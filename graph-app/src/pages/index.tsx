@@ -425,7 +425,7 @@ const MyPage = () => {
       
 
 <CartesianGrid width={inputWidth} height={inputHeight} separatorThickness={separatorThickness} axisThickness={axisThickness} gridLineColor={gridLineColor} axisTicksFont={axisTicksFont} axisLabelFont={axisLabelFont} fontFamily = {fontFamily} xStep={xStep} yStep={yStep} showXaxis={showXaxis} showYaxis={showYaxis} scaleX={scaleX} scaleY={scaleY}/>
-
+<div></div>
 </svg>
   </div>
 
