@@ -16,6 +16,7 @@ interface CartesianGridProps {
   gridLineColor: any;
   axisThickness: any;
   separatorThickness: any;
+  axisArrowThickness: any;
   graphEquation: any;
 }
 
@@ -88,18 +89,22 @@ const CartesianGrid = (props: CartesianGridProps) => {
       <defs>
         <marker
           id="triangle"
-          viewBox="0 0 10 10"
+          viewBox={`0 0 ${props.axisArrowThickness * 2} ${
+            props.axisArrowThickness * 2
+          }`}
           refX={props.height * 2}
-          refY="5"
+          refY={props.axisArrowThickness}
           markerUnits="userSpaceOnUse"
-          markerWidth="5"
-          markerHeight="10"
+          markerWidth={props.axisArrowThickness}
+          markerHeight={props.axisArrowThickness * 2}
           orient="auto"
         >
           <path
-            d="M 0 0 L 10 5 L 0 10 z"
+            d={`M 0 0 L ${props.axisArrowThickness * 2} ${
+              props.axisArrowThickness
+            } L 0 ${props.axisArrowThickness * 2} z`}
             fill="#00"
-            transform="rotate(180,5,5)"
+            transform={`rotate(180,${props.axisArrowThickness},${props.axisArrowThickness})`}
           />
         </marker>
       </defs>
@@ -176,15 +181,22 @@ const CartesianGrid = (props: CartesianGridProps) => {
       <defs>
         <marker
           id="axis"
-          viewBox="0 0 10 10"
+          viewBox={`0 0 ${props.axisArrowThickness * 2} ${
+            props.axisArrowThickness
+          }`}
           refX="0"
-          refY="5"
+          refY={props.axisArrowThickness}
           markerUnits="userSpaceOnUse"
-          markerWidth="5"
-          markerHeight="10"
+          markerWidth={props.axisArrowThickness}
+          markerHeight={props.axisArrowThickness * 2}
           orient="auto"
         >
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="#00" />
+          <path
+            d={`M 0 0 L ${props.axisArrowThickness * 2} ${
+              props.axisArrowThickness
+            } L 0 ${props.axisArrowThickness * 2} z`}
+            fill="#00"
+          />
         </marker>
       </defs>
       <line

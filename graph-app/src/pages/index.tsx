@@ -62,6 +62,12 @@ const MyPage = () => {
     setSeparatorThickness(e.target.value);
   };
 
+  const [axisArrowThickness, setAxisArrowThickness] = useState("3");
+
+  const handleAxisArrowThickness = (e: any) => {
+    setAxisArrowThickness(e.target.value);
+  };
+
   const [fontFamily, setFont] = useState("Times New Roman");
 
   const handleFont = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -415,6 +421,24 @@ const MyPage = () => {
             />
           </div>
 
+          <div className="p-1 font-normal rounded-lg shadow">
+            <div className="font-normal p-1">
+              Axis Arrow Thickness: {axisArrowThickness} pt
+            </div>
+
+            <Slider
+              aria-label="Axis Arrow Thickness"
+              defaultValue={Number(axisArrowThickness)}
+              valueLabelDisplay="auto"
+              step={1}
+              marks={[]}
+              min={1}
+              max={10}
+              onChange={handleAxisArrowThickness}
+              size="medium"
+            />
+          </div>
+
           <div className="p-1 font-normal rounded-lg shadow flex-row">
             <FormControl sx={{ m: 1, width: 250 }}>
               <InputLabel id="demo-controlled-open-select-label">
@@ -465,6 +489,7 @@ const MyPage = () => {
               showYaxis={showYaxis}
               scaleX={scaleX}
               scaleY={scaleY}
+              axisArrowThickness={axisArrowThickness}
             />
           </svg>
         </div>
