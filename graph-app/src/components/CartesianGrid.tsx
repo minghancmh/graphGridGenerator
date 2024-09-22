@@ -1,5 +1,5 @@
 import React from "react";
-import useGraph from "../hooks/useGraph";
+import getGraph from "../utils/getGraph";
 
 interface CartesianGridProps {
   width: any;
@@ -17,7 +17,7 @@ interface CartesianGridProps {
   axisThickness: any;
   separatorThickness: any;
   axisArrowThickness: any;
-  graphEquation: any;
+  graphEquations: any;
 }
 
 const CartesianGrid = (props: CartesianGridProps) => {
@@ -50,17 +50,19 @@ const CartesianGrid = (props: CartesianGridProps) => {
   const originX = props.scaleY * 20;
   const originY = props.height - 20 * props.scaleX;
 
-  const graphPoints = useGraph(
-    props.graphEquation,
-    props.width,
-    props.height,
-    xRange,
-    yRange,
-    originX,
-    originY,
-    props.scaleX,
-    props.scaleY
-  );
+  const arrGraphs = props.graphEquations.map((graphEquation: any) => {
+    return getGraph(
+      graphEquation,
+      props.width,
+      props.height,
+      xRange,
+      yRange,
+      originX,
+      originY,
+      // props.scaleX,
+      // props.scaleY
+    );
+  });
 
   // vertical lines
   for (let x = 0; x <= props.width; x += spacing) {
@@ -337,12 +339,16 @@ const CartesianGrid = (props: CartesianGridProps) => {
       viewBox={`0 0 ${props.width} ${props.height}`}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <polyline
-        stroke="black"
-        strokeWidth="1"
-        fill="none"
-        points={graphPoints}
-      />
+      {arrGraphs.map((graphPoints: any, index: any) => (
+        <polyline
+          key={index} // Unique key for each polyline
+          stroke="black"
+          strokeWidth="1"
+          fill="none"
+          points={graphPoints}
+        />
+      ))}
+
       {darkLines}
       {lightLines}
       {mediumLines}
