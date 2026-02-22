@@ -7,7 +7,7 @@ const getGraph = (
   xRange: [number, number],
   yRange: [number, number],
   originX: number,
-  originY: number
+  originY: number,
 ) => {
   try {
     // Validate the equation by parsing it
@@ -25,12 +25,21 @@ const getGraph = (
 
     const points = [];
 
-    for (let x = xMin; x <= xMax; x += step) {
-      const y = evaluate(equation, { x });
+    console.log("xMin:", xMin, "xMax:", xMax, "step:", step);
+    console.log("yMin:", yMin, "yMax:", yMax);
 
-      // Convert x and y to pixel coordinates
-      const pixelX = originX + (x * scaleX);
-      const pixelY = originY - (y * scaleY); // Subtract because SVG y-axis is inverted
+    for (let px = 0; px <= width; px++) {
+      // Convert pixel -> math x (inverse of your transform)
+      const x = (px - originX) / scaleX;
+
+      // Only evaluate inside your math range
+      if (x < xMin || x > xMax) continue;
+
+      const y = evaluate(equation, { x });
+      if (!Number.isFinite(y)) continue;
+
+      const pixelX = px;
+      const pixelY = originY - y * scaleY;
 
       points.push(`${pixelX},${pixelY}`);
     }

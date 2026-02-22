@@ -35,20 +35,26 @@ const CartesianGrid = (props: CartesianGridProps) => {
   const horizontalLines = [];
   const intervaly = 20;
 
-  const xRange: [number, number] = props.xStep
-    ? [
-        -((props.width / 20) * props.xStep) / 2,
-        ((props.width / 20) * props.xStep) / 2,
-      ]
-    : [-10, 10];
-  const yRange: [number, number] = props.yStep
-    ? [
-        -((props.height / 20) * props.yStep) / 2,
-        ((props.height / 20) * props.yStep) / 2,
-      ]
-    : [-10, 10];
   const originX = props.scaleY * 20;
   const originY = props.height - 20 * props.scaleX;
+
+  // Compute x/y ranges so the graph spans from the leftmost/rightmost
+  // and top/bottom pixels to the corresponding math min/max values.
+  // Labels and separators use a mapping where 20 pixels == props.xStep units.
+  const xRange: [number, number] = props.xStep
+    ? [
+        (0 - originX) * (props.xStep / 20),
+        (props.width - originX) * (props.xStep / 20),
+      ]
+    : [-10, 10];
+
+  const yRange: [number, number] = props.yStep
+    ? [
+        (originY - props.height) * (props.yStep / 20),
+        (originY - 0) * (props.yStep / 20),
+      ]
+    : [-10, 10];
+
 
   const arrGraphs = props.graphEquations.map((graphEquation: any) => {
     return getGraph(
