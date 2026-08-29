@@ -73,6 +73,18 @@ const MyPage = () => {
     setAxisLabelFront(e.target.value);
   };
 
+  const [xLabel, setXLabel] = useState("x");
+
+  const handleXLabel = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setXLabel(e.target.value);
+  };
+
+  const [yLabel, setYLabel] = useState("y");
+
+  const handleYLabel = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setYLabel(e.target.value);
+  };
+
   const [separatorThickness, setSeparatorThickness] = useState("1");
 
   const handleSeparatorThickness = (e: any) => {
@@ -329,6 +341,10 @@ const MyPage = () => {
           open={open}
           axisLabelFont={axisLabelFont}
           handleAxisLabelFont={handleAxisLabelFont}
+          xLabel={xLabel}
+          handleXLabel={handleXLabel}
+          yLabel={yLabel}
+          handleYLabel={handleYLabel}
           axisTicksFont={axisTicksFont}
           handleAxisTicksFont={handleAxisTicksFont}
           axisThickness={axisThickness}
@@ -363,6 +379,8 @@ const MyPage = () => {
               gridLineColor={gridLineColor}
               axisTicksFont={axisTicksFont}
               axisLabelFont={axisLabelFont}
+              xLabel={xLabel}
+              yLabel={yLabel}
               fontFamily={fontFamily}
               xStep={xStep}
               yStep={yStep}
