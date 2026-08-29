@@ -85,6 +85,12 @@ const MyPage = () => {
     setAxisArrowThickness(e.target.value);
   };
 
+  const [graphLineThickness, setGraphLineThickness] = useState("1");
+
+  const handleGraphLineThickness = (e: any) => {
+    setGraphLineThickness(e.target.value);
+  };
+
   const [fontFamily, setFont] = useState("Times New Roman");
 
   const handleFont = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -331,6 +337,8 @@ const MyPage = () => {
           handleSeparatorThickness={handleSeparatorThickness}
           axisArrowThickness={axisArrowThickness}
           handleAxisArrowThickness={handleAxisArrowThickness}
+          graphLineThickness={graphLineThickness}
+          handleGraphLineThickness={handleGraphLineThickness}
           handleClose={handleClose}
           handleOpen={handleOpen}
           gridlineColor={gridLineColor}
@@ -363,6 +371,7 @@ const MyPage = () => {
               scaleX={scaleX}
               scaleY={scaleY}
               axisArrowThickness={axisArrowThickness}
+              graphLineThickness={graphLineThickness}
             />
           </svg>
         </div>

@@ -19,6 +19,8 @@ interface AdvancedOptionsPaneProps {
   handleSeparatorThickness: any;
   axisArrowThickness: any;
   handleAxisArrowThickness: any;
+  graphLineThickness: any;
+  handleGraphLineThickness: any;
   handleClose: any;
   handleOpen: any;
   gridlineColor: any;
@@ -142,6 +144,24 @@ export function AdvancedOptionsPane(props: AdvancedOptionsPaneProps) {
           min={1}
           max={10}
           onChange={props.handleAxisArrowThickness}
+          size="medium"
+        />
+      </div>
+
+      <div className="p-1 font-normal rounded-lg shadow">
+        <div className="font-normal p-1">
+          Graph Line Thickness: {props.graphLineThickness} pt
+        </div>
+
+        <Slider
+          aria-label="Graph Line Thickness"
+          defaultValue={Number(props.graphLineThickness)}
+          valueLabelDisplay="auto"
+          step={0.05}
+          marks={[]}
+          min={0.5}
+          max={3}
+          onChange={props.handleGraphLineThickness}
           size="medium"
         />
       </div>
