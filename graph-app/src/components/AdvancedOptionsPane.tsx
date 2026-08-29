@@ -157,10 +157,10 @@ export function AdvancedOptionsPane(props: AdvancedOptionsPaneProps) {
           aria-label="Graph Line Thickness"
           defaultValue={Number(props.graphLineThickness)}
           valueLabelDisplay="auto"
-          step={0.05}
+          step={0.1}
           marks={[]}
-          min={0.5}
-          max={3}
+          min={0.1}
+          max={2.5}
           onChange={props.handleGraphLineThickness}
           size="medium"
         />
