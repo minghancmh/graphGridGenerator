@@ -17,6 +17,7 @@ interface CartesianGridProps {
   axisThickness: any;
   separatorThickness: any;
   axisArrowThickness: any;
+  graphLineThickness: any;
   graphEquations: any;
 }
 
@@ -349,7 +350,7 @@ const CartesianGrid = (props: CartesianGridProps) => {
         <polyline
           key={index} // Unique key for each polyline
           stroke="black"
-          strokeWidth="1"
+          strokeWidth={props.graphLineThickness}
           fill="none"
           points={graphPoints}
         />
