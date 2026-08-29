@@ -3,6 +3,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
+import InputField from "./InputField";
 interface AdvancedOptionsPaneProps {
   showAdvancedOptions: boolean;
   styles: any;
@@ -11,6 +12,10 @@ interface AdvancedOptionsPaneProps {
   open: boolean;
   axisLabelFont: any;
   handleAxisLabelFont: any;
+  xLabel: string;
+  handleXLabel: any;
+  yLabel: string;
+  handleYLabel: any;
   axisTicksFont: any;
   handleAxisTicksFont: any;
   axisThickness: any;
@@ -56,6 +61,28 @@ export function AdvancedOptionsPane(props: AdvancedOptionsPaneProps) {
             <option value="SFMono-Regular">SFMono-Regular</option>
           </select>
         </div>
+      </div>
+
+      <div className="p-1 font-normal">
+        <div className="font-normal p-1">X Axis Label:</div>
+        <InputField
+          type="text"
+          name="xLabel"
+          placeholder="x"
+          value={props.xLabel}
+          onChange={props.handleXLabel}
+        />
+      </div>
+
+      <div className="p-1 font-normal">
+        <div className="font-normal p-1">Y Axis Label:</div>
+        <InputField
+          type="text"
+          name="yLabel"
+          placeholder="y"
+          value={props.yLabel}
+          onChange={props.handleYLabel}
+        />
       </div>
 
       <div className="p-1 font-normal rounded-lg shadow">

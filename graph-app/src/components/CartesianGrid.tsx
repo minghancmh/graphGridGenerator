@@ -12,6 +12,8 @@ interface CartesianGridProps {
   yStep: any;
   fontFamily: any;
   axisLabelFont: any;
+  xLabel: any;
+  yLabel: any;
   axisTicksFont: any;
   gridLineColor: any;
   axisThickness: any;
@@ -141,7 +143,7 @@ const CartesianGrid = (props: CartesianGridProps) => {
         fontFamily={props.fontFamily}
         fontStyle="italic"
       >
-        y
+        {props.yLabel}
       </text>
     );
     verticalLines.push(axislabelY);
@@ -232,7 +234,7 @@ const CartesianGrid = (props: CartesianGridProps) => {
         fontFamily={props.fontFamily}
         fontStyle="italic"
       >
-        x
+        {props.xLabel}
       </text>
     );
     verticalLines.push(axislabelX);
